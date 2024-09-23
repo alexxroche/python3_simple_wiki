@@ -43,6 +43,7 @@
      - ~~ or do a redirect after submit (or manipulate the history to be "not a submit, just load the page")~~ &lt; not needed
 12. ~~Convert existing &amp;​#8203; in the articles into '&#8203;'~~
 14. image creation rate limit
+#.2. drag-n-drop image upload
 13. page creation /  edit rate limit based on a dynamically generated trust level.
      - how old is the account
      - what is the distribution of [additions/modification/deletions] = changes, 
@@ -52,3 +53,4 @@
 17. Use `os.path.join('./static/img/', spath)` in path_from_req 
 18. {optional} per-user css (so that they can change the wiki to their taste)   
 31.1. add id and class to every tag of the templates
+
