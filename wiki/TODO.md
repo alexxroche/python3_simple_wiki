@@ -3,7 +3,7 @@
 ### List
 
 00. find the createArticle page path error
-000. Do NOT display edit button in site-map
+000. ~~ Do NOT display edit button in site-map ~~
 01. ~~ fix http://localhost:8787/wiki/Trading/URLs &gt; Detail link ~~
 02. ~~ and http://localhost:8787/wiki/static/css/main.css &lt; Details ~~
 03. ~~ add route /wiki/static~~ -&gt; /static [test if that enables users to create their own css?]
