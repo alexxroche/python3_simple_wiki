@@ -9,7 +9,7 @@
 03. ~~ add route /wiki/static~~ -&gt; /static [test if that enables users to create their own css?]
 03. refactor (clean up)
 04. ~~image upload~~  
-07.1. crib from site-map to ONLY list the files in /static/img/{user}/  
+7.1. crib from site-map to ONLY list the files in /static/img/{user}/  
 0002. Display history with a function that can parse `git log -p -- wiki/TODO.md` &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; you are HERE 
 23. track when page was last edited
      - i. use git to list [["commit.committed_datetime","wiki_user","commit_hash","a_path"]]
