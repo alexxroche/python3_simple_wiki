@@ -42,8 +42,8 @@
      - and switch the editor1 form to submit using XHR
      - ~~ or do a redirect after submit (or manipulate the history to be "not a submit, just load the page")~~ &lt; not needed
 12. ~~Convert existing &amp;​#8203; in the articles into '&#8203;'~~
-14. image creation rate limit
-0.2. drag-n-drop image upload
+14. image creation rate limit   
+0.2. drag-n-drop image upload   
 13. page creation /  edit rate limit based on a dynamically generated trust level.
      - how old is the account
      - what is the distribution of [additions/modification/deletions] = changes, 
