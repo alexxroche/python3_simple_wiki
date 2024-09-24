@@ -3,8 +3,8 @@
 ### List
 
 00. find the createArticle page path error
-0. list uploaded files for that user
-0.  /wiki/upload should show the username if there is one!
+0. ~~list uploaded files for that user~~
+0.  ~~/wiki/upload should show the username if there is one!~~
 000. ~~ Do NOT display edit button in site-map ~~
 01. ~~ fix http://localhost:8787/wiki/Trading/URLs &gt; Detail link ~~
 02. ~~ and http://localhost:8787/wiki/static/css/main.css &lt; Details ~~
