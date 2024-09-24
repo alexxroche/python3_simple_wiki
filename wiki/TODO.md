@@ -3,43 +3,40 @@
 ### List
 
 0. refactor (clean up)
-0. ~~image upload~~  
-0.1. crib from site-map to ONLY list the files in /static/img/{user}/  
-0002. Display history with a function that can parse `git log -p -- wiki/TODO.md` &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; you are HERE 
-23. track when page was last edited
+1. clean up guide   
+2. publish to gitlab and github
+
+3. Display history with a function that can parse `git log -p -- wiki/TODO.md` &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; you are HERE 
+4. display when page was last edited
      - i. use git to list [["commit.committed_datetime","wiki_user","commit_hash","a_path"]]
      -  ii. then use the commit_hash + a_path to view the change
-24. ability to rename a page
+5. ability to rename a page
     - i. remember to rename all of the internal links `grep '(*Terms)' wiki/*|grep -v 'http'` as well
     - ii. can probably use git to do the rename! 
-3. clean up guide   
-4. publish to gitlab and github
-
-5. emoji
-5.1. ~~ enable emoji ~~ [you can paste them in] 
-5.2. enable emoji :joy:
-6. anchors for footnotes
-19. disable the "[Update]" button until some changes have happened
-17. ~~when clicking [Edit] {Option} scroll to the bottom of the page~~
-20. floating [edit] button so that it is always available on the left side of the screen
-12. ~\~now~\~ inserts datetime
-13. ~\~when~\~ inserts YYYY-Month-dd_HH:MM::SS
-14. ~\~who~\~ inserts users signature
-25. store local copy of page in local storage, so that if a race condition happens the changes aren't lost
-26. [Preview] button to view without saving
-1. add login
-8. re-enable Tab when edit box has focus
-9. Create [Ctrl+Enter] to submit
-10. Add "Toast" to indicate Update has happened
-14. image creation rate limit   
-0.2. drag-n-drop image upload   
-13. page creation /  edit rate limit based on a dynamically generated trust level.
+6. ability to delete a page
+7. emoji
+7.1. ~~ enable emoji ~~ [you can paste them in] 
+7.2. enable emoji :joy:
+8. anchors for footnotes
+9. disable the "[Update]" button until some changes have happened
+10. floating [edit] button so that it is always available on the left side of the screen
+11. ~\~now~\~ inserts datetime
+12. ~\~when~\~ inserts YYYY-Month-dd_HH:MM::SS
+13. ~\~who~\~ inserts users signature
+15. store local copy of page in local storage, so that if a race condition happens the changes aren't lost
+16. [Preview] button to view without saving
+18. re-enable Tab when edit box has focus
+19. Create [Ctrl+Enter] to submit
+20. Add "Toast" to indicate Update has happened
+21. image creation rate limit   
+22. drag-n-drop image upload   
+23. page creation /  edit rate limit based on a dynamically generated trust level.
      - how old is the account
      - what is the distribution of [additions/modification/deletions] = changes, 
      - how many changes have been undone
      - account type [anon, anon+known_ip, user, Curator, Editor, Admin, root, owner{BDFL}]
-15. Columized List `.column-list { columns: 100px;}` 
-17. Use `os.path.join('./static/img/', spath)` in path_from_req 
-18. {optional} per-user css (so that they can change the wiki to their taste)   
-31.1. add id and class to every tag of the templates
-
+25. Columized List `.column-list { columns: 100px;}` 
+27. Use `os.path.join('./static/img/', spath)` in path_from_req 
+28. {optional} per-user css (so that they can change the wiki to their taste)   
+29. add id and class to every tag of the templates
+30. add login &lt;= would no longer be simple
