@@ -2,9 +2,6 @@
 
 ### List
 
-0. refactor (clean up)
-1. clean up guide   
-2. publish to gitlab and github
 3. Display history with a function that can parse `git log -p -- wiki/TODO.md` 
 4. display when page was last edited
      - i. use git to list [["commit.committed_datetime","wiki_user","commit_hash","a_path"]]
@@ -39,4 +36,4 @@
 28. {optional} per-user css (so that they can change the wiki to their taste)   
 29. add id and class to every tag of the templates
 30. add login &lt;= would no longer be simple
-31. We could use git to track file uploads?
+31. do we use git to track file uploads?
