@@ -39,3 +39,4 @@
 28. {optional} per-user css (so that they can change the wiki to their taste)   
 29. add id and class to every tag of the templates
 30. add login &lt;= would no longer be simple
+31. do we use git to track file uploads?
