@@ -1,0 +1,8 @@
+    <h1> Upload a new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload class="btn_p b_prompt">
+    </form></body></html>
+        <p> If that is successful you will see the uploaded file. <h3>You can copy the URL at that point so that you can add it into the wiki where you want it with: </h3><pre>![Example-Alt-Tag](THE_URL_THAT_YOU_JUST_COPIED)</pre></p>
+    <h2>N.N.B.</h2> If you upload a file with the same filename as an existing file, the new one will <s>replace</s> the old one, without any warning and with no way to recover the old one.
+    <hr>{% if dir_ls is defined %} Your uploaded files: <br> {{ dir_ls|safe }} {% endif %}

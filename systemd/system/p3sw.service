@@ -1,0 +1,22 @@
+[Unit]
+Description = py3_simple_flask_wiki
+After = network.target
+
+[Service]
+PermissionsStartOnly = true
+PIDFile = /run/p3sw/wiki.pid
+User = nginx
+Group = nginx
+WorkingDirectory = /var/www/p3sw
+ExecStartPre = /bin/mkdir /run/p3sw
+ExecStartPre = /bin/chown -R nginx: /run/p3sw
+ExecStartPre = /bin/chown -R nginx: /var/www/p3sw/wiki/
+ExecStartPre = /bin/chown -R nginx: /var/www/p3sw/static/
+ExecStart = /var/www/p3sw/.venv/bin/gunicorn p3sw:app -b 127.0.0.1:8787 -w 3 --pid /run/p3sw/gunicorn.pid
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+ExecStopPost = /bin/rm -rf /run/p3sw
+PrivateTmp = true
+
+[Install]
+WantedBy = multi-user.target

@@ -1,0 +1,82 @@
+{% autoescape false %}
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/p3sw.js"></script>
+  </head>
+  <body>
+    <aside id="sidebar">
+      <div role="navigation" class="portlet portlet-navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+        <h3 id="p-navigation-label">Navigation</h3>
+        <div id="nav-body" class="pBody">
+          <ul>
+            <li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/" title="Main page">Main page</a></li>
+            {% if navigation_stub is defined %}
+                {{ navigation_stub|safe }}
+            {% endif %}
+            <li id="n-sitemap" class="mw-list-item"><a href="/wiki/site-map" title="site-map">Site map</a></li>
+            <li id="n-search" class="mw-list-item"><a href="/wiki/search/" title="Search within articles">Search</a></li>
+            <li id="n-upload" class="mw-list-item"><a href="/wiki/upload/" title="Upload a file">Upload</a></li>
+          </ul>
+        </div>
+      </div>
+
+        {% if username is defined and username != "": %}
+          {# only known users can edit #}
+           {% if username is defined and not '/site-map/' in detail_uri and
+                  not no_edit is defined and
+                  not '/upload/' in detail_uri and
+                  not '/search/' in detail_uri and
+                username != 'site-map' %}
+            <!--button id="edit_btn">[Edit]</button><br-->
+            <button id="edit_btn">[Edit]</button><br>
+            {% endif %}
+            <span id="user_span">User: {{ username }}</span><br>
+          {% if detailhtml is defined and detailhtml != "" and detail_uri is defined: %}
+                          <a href="{{ detail_uri }}_Detail">Detail</a>
+          {% elif parent_uri is defined and parent_uri != None: %}
+                          <a href="{{ parent_uri }}">Parent</a>
+          {% elif ( detailhtml is not defined or detailhtml == "" ) and parent_uri == None: %}
+                          <a id="addDTLa" href="/wiki/createpage/{{ detail_uri }}_Detail"
+                title="(Optionally) add Detail to this page.
+                          N.B. Save changes first!">Add Detail</a>
+          {% else: %}
+              <!-- dth: '{{ detailhtml }}'; pf: {{ parent_uri }} -->
+          {% endif %}
+        {% elif auth_str is defined and auth_str != None: %}
+            <span id="user_span">Auth: {{ auth_str }}</span>
+        {% else %}
+            <span id="user_span">Anon {% if user_ip is defined %}: {{ user_ip }}{% endif %}</span>
+        {% endif %}
+	    </aside>
+	    <div id="page">
+		    <header id="heading">
+            <!--meta user_agent="{ user_agent }}" -->
+		    </header>
+
+		    <div id="article">
+			    <aside id="information">
+				    {{ detailhtml }}
+			    </aside>
+
+			    <section id="content">
+				    {{ contenthtml }}
+			    </section>
+		    </div>
+	    </div>
+    {% if username is defined and username != "": %}
+    <div id="editor_d">
+        <form id="editor_f" method="post">
+            <textarea id="editor_t" name="editor1" wrap="off" cols="144" rows="15">{{ content_txt }}</textarea>
+            <input id="submitEdit_btn" type="submit" value="Update">
+        </form>
+    </div>
+    {% endif %}
+    <div id="footer">Python 3 Simple Wiki</div>
+  </body>
+</html>
+{% endautoescape %}

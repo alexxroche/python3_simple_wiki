@@ -5,8 +5,7 @@
 0. refactor (clean up)
 1. clean up guide   
 2. publish to gitlab and github
-
-3. Display history with a function that can parse `git log -p -- wiki/TODO.md` &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; you are HERE 
+3. Display history with a function that can parse `git log -p -- wiki/TODO.md` 
 4. display when page was last edited
      - i. use git to list [["commit.committed_datetime","wiki_user","commit_hash","a_path"]]
      -  ii. then use the commit_hash + a_path to view the change

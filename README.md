@@ -1,93 +1,36 @@
-# p3sw
+# Python 3 Simple Wiki
 
+So you want a wiki? Install https://www.mediawiki.org/wiki/MediaWiki it is battle tested, it is the software behind wikipedia.org you get the joy of learning MariaDB and PHP and a httpd daemon, such as Apache.
 
+But maybe you have further requirements?
 
-## Getting started
+* "*It is just for me, I love Markdown and I haven't found Markor for Android*": try https://en.wikipedia.org/wiki/TiddlyWiki 
+* "*It has to be small, (but not as small as tiddlyWiki) but also reliable*": https://www.dokuwiki.org/dokuwiki - it's possibly the best wiki
+* "*I **have** to run it behind nginx on linux but I do not trust databases and I absolutely refuse to let PHP anywhere near any of my servers! I lived through the Millennium and PHP is theWorst or PHP.is_the_best or mayBePHP(isn-t4U)?*"  
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Then do we have an Open Source (MIT License) bundle for you at the low low price of <pre>$your_time</pre>: Python 3 Simple Wiki ([p3sw](https://gitlab.com/alexx_net/p3sw) - inspired by [wiki-in-a-flask](https://github.com/saucecode/wiki-in-a-flask), which, (unsurprisingly) is built upon [Flask](https://flask.palletsprojects.com/) using only 100% organic hand-milled Javascript, css, HTML in a beautifully indented python basket. [Seriously, pull request are **very** much open to additional refactoring.]
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### Installation & verifying
 
-## Add your files
+	The full [install guide](wiki/INSTALL.md) is in the wiki... once you install it 😈
+Clone or download this repo into /var/www/wiki to get started. (You can move it somewhere else, just remember to edit the .env file.)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Once you have `source .venv/bin/activate` you can verify the local install with `python p3sw.py`
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/alexx_net/p3sw.git
-git branch -M main
-git push -uf origin main
-```
+### Introduction
 
-## Integrate with your tools
+The wiki pages are written in a [Markdown](https://en.wikipedia.org/wiki/Markdown) dialect, (with a pinch of opinio: __underlining__ is done with double underscores. <zws> and <nbsp> are accepted tags that are converted to HTML. The wiki runs behind nginx through gunicorn, and launched by SystemD.
 
-- [ ] [Set up project integrations](https://gitlab.com/alexx_net/p3sw/-/settings/integrations)
+p3sw has an built-in editor: a Web 1.0 <pre>form textarea</pre>, (the crowd goes "ooooh!" but unironically      as it's cool and retro, and **simple**, as is in the name of this wiki.)
 
-## Collaborate with your team
+Users can upload a limited range of files, and they are stored under their username.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Users are defined by a simple .htaccess file, or you can enable one global anonymous user for everyone. [So create your own Certificate Authority for TLS in nginx or use the excellent and free https://letsencrypt.org to reduce credential snooping.]
 
-## Test and Deploy
+There is the *outline* of a search function that, (currently) only looks at file names in the first directory.
 
-Use the built-in continuous integration in GitLab.
+Topics can be kept separate with paths, that just map directly to the file system. This also enables there to be multiple files of the same name. Users can also have a home directory to store their ~~vanity~~ passion projects - but N.B. anyone with access to the wiki can edit any page... and those changes will be committed to a git log for posterity, (and so that later we can praise or rollback edits.)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Future development
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Currently some ideas are stored in the wiki as a [To Do](wiki/TODO.md) file.

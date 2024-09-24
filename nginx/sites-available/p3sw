@@ -1,0 +1,86 @@
+server {
+    listen 80;
+    listen [::]:80;
+    #listen 80 default_server;
+    #server_name _;
+    server_name localhost wiki.lan;
+    index index.html;
+    location / {
+        # redirect any requests to the same URL but on https
+        return 301 https://$host$request_uri;
+    }
+    return 301 https://$host$request_uri;
+}
+
+server {
+	#
+	# SSL configuration
+	#
+	listen 443 ssl;
+	listen [::]:443 ssl;
+	include snippets/snakeoil.conf;
+	root /var/www/p3sw/html;
+	index index.html;
+
+	server_name localhost wiki.lan;
+
+    access_log /var/www/p3sw/log/access.log;
+    error_log  /var/www/p3sw/log/error.log;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+	location / {
+     if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+        add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+        add_header 'Access-Control-Max-Age' 1728000;
+        add_header 'Content-Type' 'text/plain; charset=utf-8';
+        add_header 'Content-Length' 0;
+        return 204;
+     }
+     if ($request_method = 'POST') {
+        add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range' always;
+        add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range' always;
+     }
+     if ($request_method = 'GET') {
+        add_header 'Access-Control-Allow-Origin' '*' always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range' always;
+        add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range' always;
+     }
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ /\.ht {
+		deny all;
+	}
+
+    location /favicon.ico {
+        alias /var/www/p3sw/static/favicon.ico;
+    }
+
+    location /wiki {
+       #allow 127.0.0.0/16;
+       #auth_basic "401 Authorization Required";
+       #auth_basic_user_file /var/www/p3sw/.htpasswd;
+       #deny all;
+       try_files           $uri @wiki_home_rewrite;
+    }
+    location ~ ^/static/([a-z_\.]*[/]*)* {
+        try_files           $uri $uri/index.html @wiki_home_rewrite;
+    }
+    location @wiki_home_rewrite {
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    HTTP_X_REAL_IP $realip_remote_addr;
+        proxy_set_header    X-HTTP_REMOTE_IP-Forwarded "$http_x_forwarded_for";
+        proxy_set_header    Host $http_host;
+        #proxy_set_header    SCRIPT_NAME /wiki;
+        proxy_set_header    SCRIPT_NAME /;
+        proxy_redirect      off;
+        proxy_pass          http://127.0.0.1:8787;
+    }
+}

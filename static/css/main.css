@@ -1,0 +1,148 @@
+body {
+	margin:0px 0px;
+	font-family:sans-serif;
+}
+h1 {
+	margin-bottom:0px;
+	margin-top:0px;
+	font-size:26pt;
+}
+h1, h2 {
+	border-bottom:1px solid #aaa;
+}
+h3 {
+	font-size:1.3em;
+}
+#sidebar {
+	float:left;
+	font-size:12pt;
+	background-color:#cfcfcf;
+        width: 8%;
+}
+#nav-body {
+	background-color:#fcfcfc;
+}
+#p-navigation-label {
+  text-transform: lowercase;
+  font-size: 91%;
+}
+#p-navigation {
+        border: 1px solid #ddd;
+        padding: 0 0.1em 0.3em 0.2em;
+}
+portlet ul, .portlet ul {
+  line-height: 1.5em;
+  font-size: 95%;
+  list-style: square;
+  list-style-position: inside;
+  padding: 0;
+}
+#page {
+	padding-left:180px;
+}
+#content {
+	margin-left:12px;
+	margin-right:18px;
+}
+#content p {
+	font-size:11pt;
+}
+#heading {
+	border-bottom:1px solid black;
+	margin-bottom:16px;
+}
+#heading h1 {
+	font-style:italic;
+	font-family:serif;
+}
+
+#information {
+	max-width:280px;
+
+	border:1px solid #ccc;
+	float:right;
+	padding:10px;
+	margin:8px;
+	background-color:#f5f5f5;
+}
+#information #title {
+	background-color:#9999ff;
+
+	display:block;
+	text-align:center;
+	margin-bottom:8px;
+	font-style:italic;
+}
+#information img {
+	width:280px;
+
+	height:auto;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+#information table {
+	width:280px;
+
+	font-size:10pt;
+}
+#information table td {
+	vertical-align:top;
+	width:140px;
+}
+#information a {
+	text-decoration:none;
+}
+#editor {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 250px;
+    border: 1px solid #888;
+    padding: 1em;
+    background: transparent;
+    color: #2b2b2b;
+    font: 13px/1.35 Helvetica, arial, sans-serif;
+    cursor: text;
+    display:none;
+}
+#submitEdit_btn {
+        background-color: #04AA6D;
+        border: 4px;
+        padding: 7px 6px;
+        font-size: 18px;
+        font: 13px/1.35 Helvetica, arial, sans-serif;
+}
+#edit_btn {
+        background: transparent;
+        color: rgb(178, 178, 43);
+        font: 13px/1.35 Helvetica, arial, sans-serif;
+        /* background-color: #04AA6D; */
+        background-color: #ffffff;
+        border: 4px;
+  padding: 7px 16px;
+  text-align: center;
+  /* text-decoration: none; */
+  display: inline-block;
+  font-size: 18px;
+}
+#addDTLa, #footer, #user_span {
+        font: 11px/1.35 Helvetica, arial, sans-serif;
+        color: rgb(178, 178, 178);
+}
+img[alt=TODO] { width: 200px; }
+
+.gb_prompt {
+        background-color: #ddd;
+        color:  rgb(0, 0, 0);
+}
+.b_prompt {
+        background-color: #cccccc;
+        color:  rgb(43, 178, 178);
+}
+.btn_p {
+        font: 13px/1.35 Helvetica, arial, sans-serif;
+        border: 1px solid #888;
+        border-radius: 3px;
+}
+
