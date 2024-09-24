@@ -13,9 +13,9 @@
     - i. remember to rename all of the internal links `grep '(*Terms)' wiki/*|grep -v 'http'` as well
     - ii. can probably use git to do the rename! 
 6. ability to delete a page
-7. emoji
-7.1. ~~ enable emoji ~~ [you can paste them in] 
-7.2. enable emoji :joy:
+7. emoji   
+7.1. ~~ enable emoji ~~ [you can paste them in]    
+7.2. enable emoji :joy:   
 8. anchors for footnotes
 9. disable the "[Update]" button until some changes have happened
 10. floating [edit] button so that it is always available on the left side of the screen
