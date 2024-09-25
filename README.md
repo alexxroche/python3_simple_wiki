@@ -19,7 +19,7 @@ Once you have `source .venv/bin/activate` you can verify the local install with 
 
 ### Introduction
 
-The wiki pages are written in a [Markdown](https://en.wikipedia.org/wiki/Markdown) dialect, (with a pinch of opinio: __underlining__ is done with double underscores. <zws> and <nbsp> are accepted tags that are converted to HTML. The wiki runs behind nginx through gunicorn, and launched by SystemD.
+The wiki pages are written in a [Markdown](https://en.wikipedia.org/wiki/Markdown) dialect, (with a pinch of opinio: __underlining__ is done with double underscores. &lt;zws&gt; and &lt;nbsp&gt; are accepted tags that are converted to HTML. The wiki runs behind nginx through gunicorn, and launched by SystemD.
 
 p3sw has an built-in editor: a Web 1.0 <pre>form textarea</pre>, (the crowd goes "ooooh!" but unironically      as it's cool and retro, and **simple**, as is in the name of this wiki.)
 
