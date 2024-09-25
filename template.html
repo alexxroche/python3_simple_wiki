@@ -37,11 +37,11 @@
             {% endif %}
             <span id="user_span">User: {{ username }}</span><br>
           {% if detailhtml is defined and detailhtml != "" and detail_uri is defined: %}
-                          <a href="{{ detail_uri }}_Detail">Detail</a>
+                          <a href="{{ detail_uri }}">Detail</a>
           {% elif parent_uri is defined and parent_uri != None: %}
                           <a href="{{ parent_uri }}">Parent</a>
           {% elif ( detailhtml is not defined or detailhtml == "" ) and parent_uri == None: %}
-                          <a id="addDTLa" href="/wiki/createpage/{{ detail_uri }}_Detail"
+                          <a id="addDTLa" href="{{ add_detail_uri }}"
                 title="(Optionally) add Detail to this page.
                           N.B. Save changes first!">Add Detail</a>
           {% else: %}

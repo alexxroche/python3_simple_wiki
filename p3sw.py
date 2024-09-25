@@ -594,31 +594,36 @@ def create_article(spath="", article=None):
     (_, username, _, _) = parse_x(request)
     if not article or username == "" or username is None:
         return abort(404)
-    file_path = request.path[17:].strip("/")
+    #file_path = request.path[17:].strip("/")
+    file_path = join(wp, spath, article)
+    dirname = join(wp, spath)
+    file_uri = join(wu, spath, article)
     if spath not in file_path:
         return abort(404)
-    if exists(wp + file_path + ".md"):
+    if exists(file_path + ".md"):
         rt_err = cfg.get(
             "g",
             "page_already_exists",
-            fallback="<a href='/wiki/%s'>Already exists!</a>",
+            fallback="<a href='%s'>Already exists!</a>",
         )
-        return rt_err % file_path
-    spath = "/" + spath + "/"
-    spath = spath.replace("//", "/")  # Dirty hack to clean up broken code
-    if not exists(wp + spath):
-        # app.logger.info("[d:cp] creating %s%s;", wp, spath)
-        make_dir(wp + spath)
+        return rt_err % file_uri
+    #spath = "/" + spath + "/"
+    #spath = spath.replace("//", "/")  # Dirty hack to clean up broken code
+    #new_path = join(wp, spath)
+    if not exists(dirname):
+        #app.logger.info("[d:cp] creating %s, (from: %s,%s, );", dirname, wp, spath)
+        make_dir(dirname)
 
     # app.logger.info(f"[d:cp] creating {wp}{spath}{article}.md;")
-    with open(wp + spath + article + ".md", "w", encoding="utf-8") as file:
+    with open(file_path + ".md", "w", encoding="utf-8") as file:
         file.write(article.replace("_", " ") + "\n=======")
 
     gitdun(username)
     rt_str = cfg.get(
-        "g", "article_created", fallback="<a href='/wiki/%s'>Article created.</a>"
+        "g", "article_created", fallback="<a href='%s'>Article created.</a>"
     )
-    return rt_str % file_path
+    #app.logger.info(f"[d:cp] returning file_uri: %s ; from wu: %s not wp: %s", file_uri, wu, wp)
+    return rt_str % file_uri
 
 
 @app.route("/wiki/search/<query>")
@@ -694,6 +699,7 @@ def view_this_article(spath="", article=None):
     this_uri = None
     title = ""
     detail_uri = ""
+    add_detail_uri = None
     if not article:
         title = cfg.get("g", "splash_title", fallback="Wiki Index")
         file_path = path_from_req("", "")
@@ -716,7 +722,9 @@ def view_this_article(spath="", article=None):
             # app.logger.info("[i:600] '%s' now %s", title, article)
         file_path = path_from_req(spath, article)
         this_uri = uri_from_req(spath, article)
-        detail_uri = join(spath, article)
+        detail_uri = join(wu, spath, article) + r'_Detail'
+        add_detail_uri = join(wu, 'createpage', spath, article) +  r'_Detail'
+        app.logger.info("[i:720] detail_uri: '%s' (from) spath: %s and art: %s", detail_uri, spath, article)
     (_, username, hxr_ip, _) = parse_x(request)
     if request.method == "POST" and username is not None:
         data = request.form.get("editor1")
@@ -756,6 +764,7 @@ def view_this_article(spath="", article=None):
         "file_path": file_path,
         # "detail_uri": detail_uri,
         "detail_uri": detail_uri,
+        "add_detail_uri": add_detail_uri,
         "username": username,
         "navigation_stub": navigation_stub,
         "user_ip": hxr_ip,
